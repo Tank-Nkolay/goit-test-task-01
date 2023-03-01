@@ -16,40 +16,34 @@ import Header from '../../img/picture-header.png';
 import FotoUser from '../../img/picture-boy.png';
 
 function CardTwit() {
-  const [stateBtn, setStateBtn] = useState(false);
+  const [stateBtn, setStateBtn] = useState(0);
   const [quantityFollowers, setQuantityFollowers] = useState(100500);
-  //   const [newQuantityFollowers, setNewQuantityFollowers] = useState(100500);
-
-  // ===========
-
-  console.log(quantityFollowers);
-  console.log(stateBtn);
 
   useEffect(() => {
-    const status = Boolean(localStorage.getItem('subscription'));
-    setStateBtn(status);
-    console.log(`use count ${status}`);
+    if (localStorage.getItem('subscription')) {
+      const status = Number(localStorage.getItem('subscription'));
+      setStateBtn(status);
+    }
   }, []);
 
   useEffect(() => {
-    if (quantityFollowers !== 0) {
+    if (localStorage.getItem('quantityFollowers')) {
       const count = Number(localStorage.getItem('quantityFollowers'));
       setQuantityFollowers(count);
-      console.log(`use count ${count}`);
     }
   }, [quantityFollowers]);
 
   function changeStatus() {
-    if (stateBtn === false) {
-      setStateBtn(true);
-      localStorage.setItem('subscription', true);
+    if (stateBtn === 0) {
+      setStateBtn(1);
+      localStorage.setItem('subscription', 1);
       const changeFollowers = quantityFollowers + 1;
       localStorage.setItem('quantityFollowers', changeFollowers);
       setQuantityFollowers(changeFollowers);
     }
-    if (stateBtn === true) {
-      setStateBtn(false);
-      localStorage.setItem('subscription', false);
+    if (stateBtn === 1) {
+      setStateBtn(0);
+      localStorage.setItem('subscription', 0);
       const changeFollowers = quantityFollowers - 1;
       localStorage.setItem('quantityFollowers', changeFollowers);
       setQuantityFollowers(changeFollowers);
@@ -74,8 +68,8 @@ function CardTwit() {
       <BoxLine></BoxLine>
       <HeaderTweet>777 TWETS</HeaderTweet>
       <HeaderFollowers>{quantityFollowers} FOLLOWERS</HeaderFollowers>
-      {!stateBtn && <BtnFollow onClick={changeStatus}>FOLLOW</BtnFollow>}
-      {stateBtn && (
+      {stateBtn === 0 && <BtnFollow onClick={changeStatus}>FOLLOW</BtnFollow>}
+      {stateBtn === 1 && (
         <BtnFollowing onClick={changeStatus}>FOLLOWING</BtnFollowing>
       )}
     </Container>
