@@ -50,6 +50,8 @@ function CardTwit() {
     }
   }
 
+  //   ======
+
   //   function numberWithCommas(quantityFollowers) {
   //     const x = quantityFollowers.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
   //     console.log(x);
