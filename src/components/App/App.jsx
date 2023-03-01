@@ -1,6 +1,3 @@
-// import { useState } from 'react';
-
-// глобальные стили
 import GlobalStyles from '../GlobalStyles';
 // импорт функции разметки
 import Section from '../Section/Section';
