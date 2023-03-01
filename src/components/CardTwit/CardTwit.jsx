@@ -11,13 +11,14 @@ import {
   BtnFollow,
   BtnFollowing,
 } from './CardTwit.styled';
-import Logo from '../../img/logo.png';
+import Logo from '../../img/logo-vector.svg';
 import Header from '../../img/picture-header.png';
-import FotoUser from '../../img/picture-boy.png';
+import FotoUser from '../../img/picture-boy-vector.svg';
 
 function CardTwit() {
   const [stateBtn, setStateBtn] = useState(0);
   const [quantityFollowers, setQuantityFollowers] = useState(100500);
+  const [newQuantityFollowers, setNewQuantityFollowers] = useState();
 
   useEffect(() => {
     if (localStorage.getItem('subscription')) {
@@ -50,17 +51,12 @@ function CardTwit() {
     }
   }
 
-  //   ======
-
-  //   function numberWithCommas(quantityFollowers) {
-  //     const x = quantityFollowers.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
-  //     console.log(x);
-  //     return x;
-  //   }
-
-  //   numberWithCommas(quantityFollowers);
-
-  //   console.log(newQuantityFollowers);
+  useEffect(() => {
+    const numberWithCommas = new Intl.NumberFormat('en').format(
+      quantityFollowers
+    );
+    setNewQuantityFollowers(numberWithCommas);
+  }, [quantityFollowers]);
 
   return (
     <Container>
@@ -68,8 +64,8 @@ function CardTwit() {
       <img src={Header} alt="Header" />
       <ImgCentral src={FotoUser} alt="Foto user" />
       <BoxLine></BoxLine>
-      <HeaderTweet>777 TWETS</HeaderTweet>
-      <HeaderFollowers>{quantityFollowers} FOLLOWERS</HeaderFollowers>
+      <HeaderTweet>777 TWEETS</HeaderTweet>
+      <HeaderFollowers>{newQuantityFollowers} FOLLOWERS</HeaderFollowers>
       {stateBtn === 0 && <BtnFollow onClick={changeStatus}>FOLLOW</BtnFollow>}
       {stateBtn === 1 && (
         <BtnFollowing onClick={changeStatus}>FOLLOWING</BtnFollowing>

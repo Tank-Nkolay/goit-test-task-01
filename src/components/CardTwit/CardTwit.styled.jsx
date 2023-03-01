@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 380px;
+  width: 320px;
   height: 460px;
   background-color: red;
   background: linear-gradient(
@@ -20,18 +20,22 @@ export const Container = styled.div`
   padding-top: 28px;
   padding-left: 36px;
   padding-right: 36px;
+  @media screen and (min-width: 768px) {
+    width: 380px;
+  }
 `;
 
 export const BoxLine = styled.div`
   position: absolute;
   left: 0;
   top: 214px;
-  width: 380px;
+  width: 320px;
   height: 8px;
   background: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.06),
     inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 768px) {
+    width: 380px;
   }
 `;
 
@@ -47,12 +51,15 @@ export const ImgLogo = styled.img`
 
 export const ImgCentral = styled.img`
   position: absolute;
-  left: 150px;
+  left: 120px;
   top: 178px;
   height: 80px;
   width: 80px;
   padding: 0;
   z-index: 10;
+  @media screen and (min-width: 768px) {
+    left: 150px;
+  }
 `;
 
 export const HeaderTweet = styled.h2`
