@@ -35,6 +35,16 @@ export const BoxLine = styled.div`
   }
 `;
 
+export const ImgLogo = styled.img`
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  height: 22px;
+  width: 76px;
+  padding: 0;
+  z-index: 10;
+`;
+
 export const ImgCentral = styled.img`
   position: absolute;
   left: 150px;
@@ -72,8 +82,17 @@ export const HeaderFollowers = styled.h2`
 export const BtnFollow = styled.button`
   width: 196px;
   height: 50px;
-  background: #ebd8ff;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
   margin-top: 26px;
+  background: #ebd8ff;
+`;
+
+export const BtnFollowing = styled.button`
+  width: 196px;
+  height: 50px;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+  margin-top: 26px;
+  background: #5cd3a8;
 `;
